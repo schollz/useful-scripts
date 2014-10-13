@@ -1,10 +1,9 @@
-# Writes binary output to Raspberry Pi GPIO pins
-
 import RPi.GPIO as GPIO 
 import time
 import sys
 
 GPIO.setwarnings(False)
+
 #A | GPIO | PIN NAME | WIRE COLOR
 #0    17       11        Yellow
 #1    22       15        Green
@@ -23,7 +22,6 @@ for i in range(len(pins)):
 	GPIO.output(pins[i],False) 
 
 num = int(sys.argv[1])
-
 binaryString = '{0:05b}'.format(num)[::-1]
 for i in range(len(binaryString)):
 	if "1" in binaryString[i]:
@@ -38,4 +36,5 @@ GPIO.output(sendPin,False)
 
 for i in range(len(pins)):
 	GPIO.output(pins[i],False) 
+
 
