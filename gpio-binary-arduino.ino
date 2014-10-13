@@ -65,7 +65,19 @@ void loop() {
         digitalWrite(pinNum, LOW);     
       }
       if (total>0) {
-        digitalWrite(total+1,HIGH);
+        // handle cases
+        if (total<=10){
+          digitalWrite(total+1,HIGH);
+        } else if (total==11) {
+          for (int pinNum = 2; pinNum <= 12; pinNum+=2) {
+            digitalWrite(pinNum, HIGH);     
+          }
+        } else if (total==12) {
+          for (int pinNum = 3; pinNum <= 12; pinNum+=2) {
+            digitalWrite(pinNum, HIGH);     
+          }
+        }
+        // done handling cases
       }
     }
   }
